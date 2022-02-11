@@ -1,6 +1,6 @@
 import argparse
 
-from utils import doTask, model_split, read_data
+from cxkParser.utils import doTask, model_split, read_data
 
 
 def main():

@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 import math
 import threading
-from config import config
+from cxkParser.config import config
 
 
 def not_empty(str):
