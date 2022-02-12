@@ -1,5 +1,9 @@
 # cxkparser
 
+For genome Sequencing / Annotation
+
+website: https://marinegenomics.oist.jp/habu/
+
 # Install
 
 ```
