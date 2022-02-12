@@ -21,7 +21,8 @@ optional arguments:
   --path PATH, -p PATH  Please input the path where the file is located
   --output OUTPUT, -o OUTPUT
                         Please input the output directory and file name of the file. e.g. /home/cxkparser/file_name.
-                        If you do not input the file name, the default file name is annotation_<original file name>. e.g. /home/cxkparser/annotation_file_name.xlsx
+                        If you do not input the file name, the default file name is annotation_<original file name>. 
+                        e.g. /home/cxkparser/annotation_file_name.xlsx
   --thread_nums THREAD_NUMS, -n THREAD_NUMS
                         Please input the number of threads, Multi-threading is not enabled by default
 ```
