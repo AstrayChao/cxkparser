@@ -17,13 +17,14 @@ def is_file(path):
 
 def read_data(path):
     model_list = []
+    type_list = ['csv', 'xlsx', 'xls']
     for file in os.listdir(path):
-        if is_file(os.path.join(path, file)):
-            print(file)
-            config.file_name_list.append(str(file))
         file_suffix = file.split('.')[-1]
-        if file_suffix not in ['csv', 'xlsx', 'xls']:
+        if is_file(os.path.join(path, file)) and file_suffix in type_list:
+            print(file)
+        if file_suffix not in type_list:
             continue
+        config.file_name_list.append(str(file))
         full_path = os.path.join(path, file)
         if file_suffix == 'csv':
             data = pd.read_csv(full_path)
@@ -89,7 +90,7 @@ def doTask(model_list_group, thread_nums, output_path):
     for i in range(len(model_list_group)):
         for j in range(thread_nums):
             thread = cxkTask(j, "Thread-" + str(j),
-                                model_list_group[i][j])
+                             model_list_group[i][j])
             thread_list.append(thread)
         for t in thread_list:
             t.start()
