@@ -1,6 +1,6 @@
 import argparse
 
-from cxkParser.utils import doTask, model_split, read_data
+from cxkParser.utils import do_task, model_split, read_data
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     args = parse_args.parse_args()
     model_list = read_data(args.path)
     model_list_group = model_split(model_list, args.thread_nums)
-    doTask(model_list_group, args.thread_nums, args.output)
+    do_task(model_list_group, args.thread_nums, args.output)
     print("cxkParser end.")
 
 

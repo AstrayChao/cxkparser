@@ -1,3 +1,4 @@
+from email import parser
 import os
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -45,7 +46,7 @@ def model_split(model_list, thread_num):
     return concurrency_model_list
 
 
-def parse_concurrency(model_group):
+def parse(model_group):
     for id in model_group:
         full_url = config.base_url + id + config.url_suffix
         doc = requests.get(full_url).text
@@ -63,15 +64,15 @@ def parse_concurrency(model_group):
         print(f"{id}: done")
 
 
-class cxkTask(threading.Thread):
-    def __init__(self, threadID, name, task):
+class Cxk_Task(threading.Thread):
+    def __init__(self, thread_id, name, task):
         threading.Thread.__init__(self)
-        self.threadID = threadID
+        self.thread_id = thread_id
         self.name = name
         self.task = task
 
     def run(self):
-        parse_concurrency(self.task)
+        parser(self.task)
         print(f"{self.name} thread done")
 
 
@@ -85,12 +86,12 @@ def save(output_path, result_list, file_name):
         df.to_excel(output_path)
 
 
-def doTask(model_list_group, thread_nums, output_path):
+def do_task(model_list_group, thread_nums, output_path):
     thread_list = []
     for i in range(len(model_list_group)):
         for j in range(thread_nums):
-            thread = cxkTask(j, "Thread-" + str(j),
-                             model_list_group[i][j])
+            thread = Cxk_Task(j, "Thread-" + str(j),
+                              model_list_group[i][j])
             thread_list.append(thread)
         for t in thread_list:
             t.start()
