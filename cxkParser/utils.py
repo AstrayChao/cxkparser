@@ -31,7 +31,7 @@ def read_data(path):
         else:
             data = pd.read_excel(full_path)
         if 'target_id' not in data:
-            raise Exception("请调好格式，以target_id作为那个id的列名")
+            raise Exception("id column name must be target_id.")
         model_list.append(data['target_id'])
     return model_list
 
@@ -72,7 +72,7 @@ class cxkTask(threading.Thread):
 
     def run(self):
         parse_concurrency(self.task)
-        print(f"{self.name} 线程退出")
+        print(f"{self.name} thread done")
 
 
 def save(output_path, result_list, file_name):
