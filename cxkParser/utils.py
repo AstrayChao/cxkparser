@@ -1,4 +1,3 @@
-from email import parser
 import os
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -72,7 +71,7 @@ class Cxk_Task(threading.Thread):
         self.task = task
 
     def run(self):
-        parser(self.task)
+        parse(self.task)
         print(f"{self.name} thread done")
 
 
