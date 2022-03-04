@@ -1,5 +1,5 @@
 import argparse
-
+from pathlib import Path
 from cxkParser.utils import do_task, model_split, read_data
 
 
@@ -14,8 +14,7 @@ def main():
     args = parse_args.parse_args()
     model_list = read_data(args.path)
     model_list_group = model_split(model_list, args.thread_nums)
-    if not os.path.exists(args.output):
-        os.mkdir(args.output)
+    Path(args.output).mkdir(parents=True, exist_ok=True)
     do_task(model_list_group, args.thread_nums, args.output)
     print("cxkParser end.")
 
