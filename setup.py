@@ -3,7 +3,7 @@ setup(
     name="cxkParser",
     version='0.2.4',
     keywords={"pip", "cxkParser"},
-    description="用来给cxk处理数据",
+    description="for cxk",
     license="MIT Licence",
     author='dxc',
     author_email='dxclmrl@outlook.com',
